@@ -7,9 +7,9 @@ trigger:
 - main
 
 pool:
-#  name: Default
-#  demands: Agent.Name -equals INBANLT-0ZGUGUQ
-  vmImage: ubuntu-latest
+  name: Default
+  demands: Agent.Name -equals INBANLT-0ZGUGUQ
+#  vmImage: ubuntu-latest
 strategy:
   matrix:
     Python27:
