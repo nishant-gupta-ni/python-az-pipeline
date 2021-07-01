@@ -8,7 +8,7 @@ trigger:
 
 pool:
   name: Default
-  demands: Agent.Name -equals INBANLT-0ZGUGUQ
+  demands: Agent.Name -equals mydockeragent
 #  vmImage: ubuntu-latest
 strategy:
   matrix:
