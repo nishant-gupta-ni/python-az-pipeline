@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: |
         py -m pip install --upgrade pip
-        pip install pylint
+        py -m pip install pylint
     - name: Analysing the code with pylint
       run: |
         pylint `ls -R|grep .py$|xargs`
