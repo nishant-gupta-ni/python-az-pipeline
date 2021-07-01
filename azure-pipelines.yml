@@ -7,7 +7,9 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: Default
+  demands: Agent.Name -equals mydockeragent
+#  vmImage: ubuntu-latest
 strategy:
   matrix:
     Python27:
@@ -34,3 +36,20 @@ steps:
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
+
+- script: |
+    python -m pip install flake8
+    flake8 .
+  displayName: 'Run lint tests'
+
+- script: |
+    pip install pytest pytest-azurepipelines
+    pip install pytest-cov
+    pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml
+  displayName: 'pytest'
+
+- script: pip install tox
+  displayName: 'Install Tox'
+
+- script: tox -e py
+  displayName: 'Run Tox'
