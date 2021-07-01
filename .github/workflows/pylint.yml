@@ -1,0 +1,22 @@
+name: Pylint
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+#    - uses: actions/checkout@v2
+#    - name: Set up Python 3.6
+#      uses: actions/setup-python@v2
+#      with:
+#        python-version: 3.6
+    - name: Install dependencies
+      run: |
+        py -m pip install --upgrade pip
+        py -m pip install pylint
+    - name: Analysing the code with pylint
+      run: |
+        py -m pylint `ls -R|Select-String .py$|xargs`
