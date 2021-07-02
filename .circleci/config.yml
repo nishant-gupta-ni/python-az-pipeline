@@ -39,3 +39,6 @@ jobs:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: pytest
+      - newman/newman-run:
+          collection: ./postman_collection.json
+          environment: ./postman_environment.json
